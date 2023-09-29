@@ -2,6 +2,22 @@
   "name": "vue-easy-used-components",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "chrisworkalx"
+  },
+  "keywords": [
+    "折叠",
+    "vue-collapse-transition",
+    "vue",
+    "element-ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisworkalx/vue-easy-used-components"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/chrisworkalx/vue-easy-used-components",
+  "bugs": "https://github.com/chrisworkalx/vue-easy-used-components/issues",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
