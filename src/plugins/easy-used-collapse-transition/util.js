@@ -35,6 +35,9 @@ export default {
 
     return style;
   },
+  setCstStyle(ele, prop, value) {
+    ele.style.setProperty(prop, value);
+  },
   addClass(ele, cls) {
     const name = ele.className;
     const blank = name !== '' ? ' ' : '';

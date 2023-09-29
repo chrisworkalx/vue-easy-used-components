@@ -5,10 +5,10 @@
       @beforeEnter="handleBeforeEnter"
       @afterEnter="handleAfterEnter"
       @beforeLeave="handleBeforeLeave"
-    >
-      <!-- direction="horizon"
+      direction="vertical"
       :duration="5000"
-      :easing="cubic" -->
+      :easing="cubic"
+    >
       <!-- direction="horizon | vertical" -->
       <div v-show="isShow" class="list">
         <div v-for="i in 8" :key="i" class="list-item">{{ i }}</div>

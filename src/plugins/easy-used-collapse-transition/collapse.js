@@ -9,6 +9,10 @@ export const collapse = {
     util.executeBlock({
       isPass: direction === 'vertical',
       callback: () => {
+        const easing = util.getDefaultPropsKey(rest, 'easing', 'ease-in-out');
+        const duration = util.getDefaultPropsKey(rest, 'duration', 300);
+        util.setCstStyle(ele, '--duration', duration + 'ms');
+        util.setCstStyle(ele, '--easing', easing);
         util.addClass(ele, 'collapse-transition');
         ele.dataset.oldPaddingTop = ele.style.paddingTop;
         ele.dataset.oldPaddingBottom = ele.style.paddingBottom;
@@ -50,14 +54,12 @@ export const collapse = {
       isPass: direction === 'horizon',
       callback: () => {
         const easing = util.getDefaultPropsKey(rest, 'easing', 'ease-in-out');
-        const duration = util.getDefaultPropsKey(rest, 'duration', 1000);
+        const duration = util.getDefaultPropsKey(rest, 'duration', 300);
         util.detectAndCacheDimensions(ele, direction);
         util.setClosedDimensions(ele);
         util.hideOverflow(ele);
         util.forceRepaint(ele, direction);
-        // util.addClass(ele, 'collapse-transition');
         util.setTransition(ele, { easing, duration });
-
         util.setOpenedDimensions(ele);
       }
     });
@@ -80,7 +82,7 @@ export const collapse = {
       callback: () => {
         util.unsetOverflow(ele);
         util.removeClass(ele, 'collapse-transition');
-        // util.unsetTransition(ele);
+        util.unsetTransition(ele);
         util.unsetDimensions(ele);
         util.clearCachedDimensions();
       }
@@ -110,11 +112,15 @@ export const collapse = {
 
   leave(ele, done, ...rest) {
     const direction = util.getDefaultDirection(rest);
+    const easing = util.getDefaultPropsKey(rest, 'easing', 'ease-in-out');
+    const duration = util.getDefaultPropsKey(rest, 'duration', 300);
     util.executeBlock({
       isPass: direction === 'vertical',
       callback: () => {
         if (ele.scrollHeight !== 0) {
           // for safari: add class after set height, or it will jump to zero height suddenly, weired
+          util.setCstStyle(ele, '--duration', duration + 'ms');
+          util.setCstStyle(ele, '--easing', easing);
           util.addClass(ele, 'collapse-transition');
           ele.style.height = '0';
           ele.style.paddingTop = '0';
@@ -126,13 +132,10 @@ export const collapse = {
     util.executeBlock({
       isPass: direction === 'horizon',
       callback: () => {
-        const easing = util.getDefaultPropsKey(rest, 'easing', 'ease-in-out');
-        const duration = util.getDefaultPropsKey(rest, 'duration', 1000);
         util.detectAndCacheDimensions(ele, direction);
         util.setOpenedDimensions(ele);
         util.hideOverflow(ele);
         util.forceRepaint(ele, direction);
-        // util.addClass(ele, 'collapse-transition');
         util.setTransition(ele, { easing, duration });
         util.setClosedDimensions(ele);
       }
@@ -156,7 +159,7 @@ export const collapse = {
       callback: () => {
         util.unsetOverflow(ele); //重置workflow： ‘’
         util.removeClass(ele, 'collapse-transition');
-        // util.unsetTransition(ele); //重置transition
+        util.unsetTransition(ele); //重置transition
         util.unsetDimensions(ele); //清除el上的style相关的key
         util.clearCachedDimensions(); //  清除cachedStyles
       }
