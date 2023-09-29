@@ -1,10 +1,11 @@
 {
   "name": "vue-easy-used-components",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "author": {
     "name": "chrisworkalx"
   },
+  "main": "./lib/vue-easy-used-components.umd.min.js",
   "keywords": [
     "折叠",
     "vue-collapse-transition",
