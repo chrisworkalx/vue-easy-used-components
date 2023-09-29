@@ -22,7 +22,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lib": "vue-cli-service build --target lib --name vue-easy-used-components --dest lib src/plugins/index.js"
+    "lib": "rm -rf ./lib && vue-cli-service build --target lib --name vue-easy-used-components --dest lib src/plugins/index.js"
   },
   "dependencies": {
     "core-js": "^3.8.3",
