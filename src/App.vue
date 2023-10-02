@@ -2,7 +2,8 @@
   <div id="app">
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/transition">Transition</router-link>
+      <router-link to="/transition">Transition</router-link> |
+      <router-link to="/throttle">Throttle</router-link>
     </nav>
     <router-view />
   </div>

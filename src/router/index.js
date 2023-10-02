@@ -15,6 +15,12 @@ const routes = [
     name: 'transition',
     component: () =>
       import(/* webpackChunkName: "transition" */ '../views/Transition.vue')
+  },
+  {
+    path: '/throttle',
+    name: 'Throttle',
+    component: () =>
+      import(/* webpackChunkName: "throttle" */ '../views/Throttle.vue')
   }
 ];
 
