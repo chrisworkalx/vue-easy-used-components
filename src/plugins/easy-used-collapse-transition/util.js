@@ -41,6 +41,7 @@ export default {
   addClass(ele, cls) {
     const name = ele.className;
     const blank = name !== '' ? ' ' : '';
+    console.log(cls, '====cls');
     ele.className = name + blank + cls;
   },
   removeClass(ele, cls) {
