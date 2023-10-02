@@ -13,7 +13,7 @@ export const collapse = {
         const duration = util.getDefaultPropsKey(rest, 'duration', 300);
         util.setCstStyle(ele, '--duration', duration + 'ms');
         util.setCstStyle(ele, '--easing', easing);
-        util.addClass(ele, 'collapse-transition');
+        util.addClass(ele, 'esay_collapse-transition');
         ele.dataset.oldPaddingTop = ele.style.paddingTop;
         ele.dataset.oldPaddingBottom = ele.style.paddingBottom;
         ele.style.height = '0';
@@ -25,7 +25,7 @@ export const collapse = {
       isPass: direction === 'horizon',
       callback: () => {
         //FIXME: todo sth
-        // util.addClass(ele, 'collapse-transition');
+        // util.addClass(ele, 'esay_collapse-transition');
       }
     });
   },
@@ -71,7 +71,7 @@ export const collapse = {
     util.executeBlock({
       isPass: direction === 'vertical',
       callback: () => {
-        util.removeClass(ele, 'collapse-transition');
+        util.removeClass(ele, 'esay_collapse-transition');
         ele.style.height = '';
         ele.style.overflow = ele.dataset.oldOverflow;
       }
@@ -81,7 +81,7 @@ export const collapse = {
       isPass: direction === 'horizon',
       callback: () => {
         util.unsetOverflow(ele);
-        util.removeClass(ele, 'collapse-transition');
+        util.removeClass(ele, 'esay_collapse-transition');
         util.unsetTransition(ele);
         util.unsetDimensions(ele);
         util.clearCachedDimensions();
@@ -121,7 +121,7 @@ export const collapse = {
           // for safari: add class after set height, or it will jump to zero height suddenly, weired
           util.setCstStyle(ele, '--duration', duration + 'ms');
           util.setCstStyle(ele, '--easing', easing);
-          util.addClass(ele, 'collapse-transition');
+          util.addClass(ele, 'esay_collapse-transition');
           ele.style.height = '0';
           ele.style.paddingTop = '0';
           ele.style.paddingBottom = '0';
@@ -147,7 +147,7 @@ export const collapse = {
     util.executeBlock({
       isPass: direction === 'vertical',
       callback: () => {
-        util.removeClass(ele, 'collapse-transition');
+        util.removeClass(ele, 'esay_collapse-transition');
         ele.style.height = '';
         ele.style.overflow = ele.dataset.oldOverflow;
         ele.style.paddingTop = ele.dataset.oldPaddingTop;
@@ -158,7 +158,7 @@ export const collapse = {
       isPass: direction === 'horizon',
       callback: () => {
         util.unsetOverflow(ele); //重置workflow： ‘’
-        util.removeClass(ele, 'collapse-transition');
+        util.removeClass(ele, 'esay_collapse-transition');
         util.unsetTransition(ele); //重置transition
         util.unsetDimensions(ele); //清除el上的style相关的key
         util.clearCachedDimensions(); //  清除cachedStyles

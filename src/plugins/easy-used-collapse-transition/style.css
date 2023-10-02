@@ -1,4 +1,4 @@
-.collapse-transition {
+.esay_collapse-transition {
               transition: 
               height var(--duration)  var(--easing), 
               padding-top var(--duration)  var(--easing),
