@@ -7,7 +7,6 @@ const install = (Vue) => {
   requireComponent.keys().forEach((element) => {
     const config = requireComponent(element);
     const componentName = config.default.name;
-    console.log('componentName', componentName);
     Vue.component(componentName, config.default || config);
   });
 };
