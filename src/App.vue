@@ -6,9 +6,40 @@
       <router-link to="/throttle">Throttle</router-link> |
       <router-link to="/watermark">WaterMark</router-link>
     </nav>
-    <router-view />
+    <main>
+      <easy-used-water-mark
+        text="禁止转载"
+        :font-size="20"
+        :gap="40"
+        font-style="#f40"
+        :rotate-deg="135"
+        :is-show-water-mark="isShowWaterMark"
+        @violation="handleViolation"
+      >
+        <router-view />
+      </easy-used-water-mark>
+    </main>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    handleViolation() {
+      alert('违规了！');
+    }
+  },
+  computed: {
+    isShowWaterMark() {
+      console.log(
+        'this.$route.meta.showWaterMark',
+        this.$route.meta.showWaterMark
+      );
+      return this.$route.meta.showWaterMark || false;
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -17,6 +48,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 nav {
@@ -30,5 +65,8 @@ nav {
       color: #42b983;
     }
   }
+}
+main {
+  flex: 1;
 }
 </style>

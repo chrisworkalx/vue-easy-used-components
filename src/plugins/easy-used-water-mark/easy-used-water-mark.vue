@@ -44,6 +44,18 @@ export default {
       waterMarkContainer: null
     };
   },
+  updated() {
+    this.formatWaterMark();
+    this.execFun([
+      () =>
+        this.$watch('flag', () => {
+          this.createWaterMarkElement();
+          this.$emit('violation');
+        }),
+      this.listenDOMNodes,
+      this.createWaterMarkElement
+    ]);
+  },
   mounted() {
     this.execFun([
       () =>
@@ -56,13 +68,18 @@ export default {
     ]);
   },
   beforeDestroy() {
-    this.execFun(() => {
-      this.ob && this.ob.disconnect();
-      this.waterMarkContainer = null;
-    });
+    this.execFun(this.formatWaterMark);
   },
   methods: {
+    formatWaterMark() {
+      this.ob && this.ob.disconnect();
+      if (this.waterMarkContainer) {
+        this.waterMarkContainer.remove();
+        this.waterMarkContainer = null;
+      }
+    },
     execFun(fn) {
+      console.log('this.isShowWaterMark======exec', this.isShowWaterMark);
       const self = this;
       fn = Array.isArray(fn) ? fn : [fn];
       if (!this.isShowWaterMark) {

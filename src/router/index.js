@@ -25,6 +25,9 @@ const routes = [
   {
     path: '/watermark',
     name: 'WaterMark',
+    meta: {
+      showWaterMark: true
+    },
     component: () =>
       import(/* webpackChunkName: "watermark" */ '../views/WaterMark.vue')
   }
