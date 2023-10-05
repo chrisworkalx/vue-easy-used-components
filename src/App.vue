@@ -3,7 +3,8 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/transition">Transition</router-link> |
-      <router-link to="/throttle">Throttle</router-link>
+      <router-link to="/throttle">Throttle</router-link> |
+      <router-link to="/watermark">WaterMark</router-link>
     </nav>
     <router-view />
   </div>

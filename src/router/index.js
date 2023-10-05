@@ -21,6 +21,12 @@ const routes = [
     name: 'Throttle',
     component: () =>
       import(/* webpackChunkName: "throttle" */ '../views/Throttle.vue')
+  },
+  {
+    path: '/watermark',
+    name: 'WaterMark',
+    component: () =>
+      import(/* webpackChunkName: "watermark" */ '../views/WaterMark.vue')
   }
 ];
 
