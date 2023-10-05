@@ -31,10 +31,6 @@ export default {
   },
   computed: {
     isShowWaterMark() {
-      console.log(
-        'this.$route.meta.showWaterMark',
-        this.$route.meta.showWaterMark
-      );
       return this.$route.meta.showWaterMark || false;
     }
   }

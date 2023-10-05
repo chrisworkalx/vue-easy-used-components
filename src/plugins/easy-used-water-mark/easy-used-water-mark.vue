@@ -41,31 +41,37 @@ export default {
     return {
       flag: 0,
       ob: null,
-      waterMarkContainer: null
+      waterMarkContainer: null,
+      watchTag: null
     };
   },
-  updated() {
-    this.formatWaterMark();
-    this.execFun([
-      () =>
-        this.$watch('flag', () => {
-          this.createWaterMarkElement();
-          this.$emit('violation');
-        }),
-      this.listenDOMNodes,
-      this.createWaterMarkElement
-    ]);
-  },
   mounted() {
-    this.execFun([
-      () =>
-        this.$watch('flag', () => {
-          this.createWaterMarkElement();
-          this.$emit('violation');
-        }),
-      this.listenDOMNodes,
-      this.createWaterMarkElement
-    ]);
+    this.$watch(
+      'isShowWaterMark',
+      (n) => {
+        if (n) {
+          this.execFun([
+            () => {
+              if (this.watchTag) {
+                //先销毁
+                this.watchTag();
+              }
+              this.watchTag = this.$watch('flag', () => {
+                this.createWaterMarkElement();
+                this.$emit('violation');
+              });
+            },
+            this.listenDOMNodes,
+            this.createWaterMarkElement
+          ]);
+        } else {
+          this.formatWaterMark();
+        }
+      },
+      {
+        immediate: true
+      }
+    );
   },
   beforeDestroy() {
     this.execFun(this.formatWaterMark);
@@ -77,9 +83,12 @@ export default {
         this.waterMarkContainer.remove();
         this.waterMarkContainer = null;
       }
+      if (this.watchTag) {
+        this.watchTag();
+        this.watchTag = null;
+      }
     },
     execFun(fn) {
-      console.log('this.isShowWaterMark======exec', this.isShowWaterMark);
       const self = this;
       fn = Array.isArray(fn) ? fn : [fn];
       if (!this.isShowWaterMark) {
